@@ -30,7 +30,7 @@ apply plugin: 'com.android.library'
 //apply plugin: 'kotlin-android'
 
 android {
-
+    namespace 'com.jenildgohel.ar_flutter_reloaded'
     compileSdkVersion 31
 
     compileOptions {
