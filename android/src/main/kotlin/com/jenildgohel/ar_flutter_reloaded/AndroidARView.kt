@@ -1,4 +1,4 @@
-package com.thejenilgohel.ar_flutter_reloaded
+package com.jenildgohel.ar_flutter_reloaded
 
 import android.app.Activity
 import android.app.Application
@@ -18,10 +18,10 @@ import com.google.ar.core.exceptions.*
 import com.google.ar.sceneform.*
 import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.ux.*
-import io.carius.lars.ar_flutter_reloaded.Serialization.deserializeMatrix4
-import io.carius.lars.ar_flutter_reloaded.Serialization.serializeAnchor
-import io.carius.lars.ar_flutter_reloaded.Serialization.serializeHitResult
-import io.carius.lars.ar_flutter_reloaded.Serialization.serializePose
+import com.jenildgohel.ar_flutter_reloaded.Serialization.deserializeMatrix4
+import com.jenildgohel.ar_flutter_reloaded.Serialization.serializeAnchor
+import com.jenildgohel.ar_flutter_reloaded.Serialization.serializeHitResult
+import com.jenildgohel.ar_flutter_reloaded.Serialization.serializePose
 import io.flutter.FlutterInjector
 import io.flutter.embedding.engine.loader.FlutterLoader
 import io.flutter.plugin.common.BinaryMessenger

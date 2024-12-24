@@ -1,4 +1,4 @@
-package com.thejenilgohel.ar_flutter_reloaded
+package com.jenildgohel.ar_flutter_reloaded.Serialization
 
 import com.google.ar.core.*
 import com.google.ar.sceneform.AnchorNode

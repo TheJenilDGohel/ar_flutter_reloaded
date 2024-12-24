@@ -1,4 +1,4 @@
-package com.thejenilgohel.ar_flutter_reloaded
+package com.jenildgohel.ar_flutter_reloaded
 
 import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -22,7 +22,7 @@ class ArFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onAttachedToEngine(
       @NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding
   ) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "ar_flutter_reloaded")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "ar_flutter_plugin")
     channel.setMethodCallHandler(this)
 
     this.flutterPluginBinding = flutterPluginBinding
@@ -50,7 +50,7 @@ class ArFlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
     this.flutterPluginBinding.platformViewRegistry.registerViewFactory(
-        "ar_flutter_reloaded", AndroidARViewFactory(binding.activity, flutterPluginBinding.binaryMessenger))
+        "ar_flutter_plugin", AndroidARViewFactory(binding.activity, flutterPluginBinding.binaryMessenger))
   }
 
   override fun onDetachedFromActivityForConfigChanges() {

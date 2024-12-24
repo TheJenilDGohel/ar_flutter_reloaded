@@ -1,4 +1,4 @@
-package com.thejenilgohel.ar_flutter_reloaded
+package com.jenildgohel.ar_flutter_reloaded
 
 import com.google.ar.core.Anchor
 import com.google.ar.core.Anchor.CloudAnchorState

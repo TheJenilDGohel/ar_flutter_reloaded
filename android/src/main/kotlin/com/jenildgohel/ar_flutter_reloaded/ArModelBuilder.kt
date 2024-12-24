@@ -1,4 +1,4 @@
-package com.thejenilgohel.ar_flutter_reloaded
+package com.jenildgohel.ar_flutter_reloaded
 
 import android.R
 import android.app.Activity
@@ -20,7 +20,7 @@ import com.google.ar.sceneform.rendering.*
 import com.google.ar.sceneform.utilities.Preconditions
 import com.google.ar.sceneform.ux.*
 
-import io.carius.lars.ar_flutter_reloaded.Serialization.*
+import com.jenildgohel.ar_flutter_reloaded.Serialization.*
 
 import io.flutter.FlutterInjector
 import io.flutter.embedding.engine.loader.FlutterLoader
