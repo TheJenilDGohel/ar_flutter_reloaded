@@ -1,4 +1,4 @@
 #import <Flutter/Flutter.h>
 
-@interface ArFlutterPlugin : NSObject<FlutterPlugin>
+@interface ArFlutterReloaded : NSObject<FlutterPlugin>
 @end

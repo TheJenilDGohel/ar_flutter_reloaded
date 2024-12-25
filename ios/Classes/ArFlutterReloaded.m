@@ -8,7 +8,7 @@
 #import "ar_flutter_reloaded-Swift.h"
 #endif
 
-@implementation ArFlutterPlugin
+@implementation ArFlutterReloaded
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   [SwiftArFlutterPlugin registerWithRegistrar:registrar];
 }
