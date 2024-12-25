@@ -7,9 +7,11 @@ Many thanks to Oleksandr Leuschenko for the [arkit_flutter_plugin](https://githu
 
 <div align="center">
   <img src="https://media.giphy.com/media/U3UP4fTE6QfuoooLaC/giphy.gif" alt="Dragon Ball Z Goku" />
-</div>  
+  <p><em>GIF via <a href="https://giphy.com/gifs/TOEIAnimationUK-dragon-ball-z-son-goku-U3UP4fTE6QfuoooLaC">GIPHY</a></em></p>
+</div>
 
-*GIF via [GIPHY](https://giphy.com/gifs/TOEIAnimationUK-dragon-ball-z-son-goku-U3UP4fTE6QfuoooLaC)*
+
+
 
 ## Getting Started
 
