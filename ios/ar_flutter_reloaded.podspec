@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 A Flutter plugin for shared AR experiences supporting Android and iOS.
                        DESC
+  s.homepage         = 'https://github.com/TheJenilDGohel'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Jenil D Gohel' => 'dev.jenildgohel@gmail.com' }
   s.source           = { :path => '.' }
