@@ -5,6 +5,10 @@ Flutter Plugin for (collaborative) Augmented Reality - Supports ARKit for iOS an
 
 Many thanks to Oleksandr Leuschenko for the [arkit_flutter_plugin](https://github.com/olexale/arkit_flutter_plugin) and to Gian Marco Di Francesco for the [arcore_flutter_plugin](https://github.com/giandifra/arcore_flutter_plugin) which both served as a great basis and starting point for this project.
 
+![Dragon Ball Z Goku](https://media.giphy.com/media/U3UP4fTE6QfuoooLaC/giphy.gif)  
+
+*GIF via [GIPHY](https://giphy.com/gifs/TOEIAnimationUK-dragon-ball-z-son-goku-U3UP4fTE6QfuoooLaC)*
+
 ## Getting Started
 
 ### Installing
