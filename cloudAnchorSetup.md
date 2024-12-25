@@ -1,94 +1,106 @@
 # Getting Started with Cloud Anchors
 
-Bring your AR experiences to life with Cloud Anchors! Follow this guide to set up your app for hosting, saving, and sharing AR anchors across devices.
+## Overview
+
+The **ar_flutter_reloaded** plugin utilizes the Google Cloud Anchor API to enable collaborative AR experiences. With **OAuth 2.0 authentication**, you can extend the lifetime of cloud anchors from 24 hours to up to 365 days, enhancing the capabilities of your AR applications. Follow these steps to set up your application and start creating immersive shared AR experiences.
 
 ---
 
-## Why Choose OAuth 2.0?
+## Setting up Google Cloud Anchor Service
 
-Using an **API key** limits anchor lifetime to **24 hours**, but with **OAuth 2.0**, anchors can last up to **365 days**. Here's how to configure OAuth for your app.
+The **Google Cloud Anchor API** is essential for uploading, storing, and downloading AR anchors. If your app uses collaborative AR features, complete the following setup:
 
----
-
-## Step 1: Set Up Google Cloud Anchor Service
-
-The plugin uses Google Cloud Anchor API to manage AR anchors. Follow these steps to enable shared AR experiences:
-
-### 1. **Activate Cloud Anchor API**
-- Go to the [Google Cloud Console](https://console.cloud.google.com).
-- Enable the [Cloud Anchor API](https://console.cloud.google.com/apis/api/arcorecloudanchor.googleapis.com) for your project.
-
-### 2. **Configure for Android**
-- Open the [Google Cloud Platform Console](https://console.cloud.google.com).
-- Navigate to **APIs & Services > Credentials**.
-- Create an OAuth client ID:
-    - Choose **Application Type: Android**.
-    - Use your app’s package name (found in `AndroidManifest.xml`).
-    - Add the SHA-1 key (generate with: `keytool -keystore ~/.android/debug.keystore -list -v`).
-- Add OAuth consent details:
-    - Go to the [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
-    - Provide a product name, support email, and select required API scopes (e.g., ARCore Cloud Anchor API).
-- Update `build.gradle` and ProGuard rules for keyless authentication:
-  ```gradle  
-  dependencies {  
-      implementation 'com.google.android.gms:play-services-auth:16+'  
-  }  
-  ```  
-  Add ProGuard rules:
-  ```java  
-  -keep class com.google.android.gms.common.** { *; }  
-  -keep class com.google.android.gms.auth.** { *; }  
-  -keep class com.google.android.gms.tasks.** { *; }  
-  ```  
-
-### 3. **Configure for iOS**
-- Create a Google Service account:
-    - Go to **APIs & Services > Credentials**.
-    - Add a new service account, assign the role **Service Account Token Creator**, and download the JSON key.
-- Add the JSON key to your Flutter project:
-    - Rename the file to `cloudAnchorKey.json`.
-    - Add it to the `ios/Runner` directory and link it in Xcode.
+### 1. Activate the Cloud Anchor API
+- Go to the [Cloud Anchor API](https://console.cloud.google.com/apis/api/arcorecloudanchor.googleapis.com) page.
+- Enable the API in your [Google Cloud Console](https://console.cloud.google.com) for your project.
 
 ---
 
-## Step 2: Set Up Firebase
+### 2. Register the Android Part of Your Flutter Application
 
-Firebase simplifies anchor distribution for shared AR experiences.
+#### Steps for OAuth 2.0 Setup:
+1. Open the [Google Cloud Platform Console](https://console.cloud.google.com).
+2. Navigate to **APIs & Services > Credentials**.
+3. Click **Create Credentials > OAuth client ID** and select **Android** as the Application type.
+4. Enter:
+    - **Name**: A descriptive name for your app.
+    - **Package name**: This must match the package name in your `AndroidManifest.xml`.
+    - **SHA-1 Certificate Fingerprint**: Run this command in your terminal:
+      ```
+      keytool -keystore ~/.android/debug.keystore -list -v
+      ```
+5. Click **Create Client ID**.
+6. If required, configure the **OAuth Consent Screen**:
+    - Go to the [OAuth Consent Screen](https://console.cloud.google.com/apis/credentials/consent) page.
+    - Fill in details such as product name and support email.
+    - Add required scopes, including `ARCore Cloud Anchor API`.
 
-### 1. **Create a Firebase Project**
-- Head to the [Firebase Console](https://console.firebase.google.com).
-
-### 2. **Configure Android**
-- Register your app and download the `google-services.json` file.
-- Add it to `android/app` and update your `build.gradle` files:
-  ```gradle  
-  dependencies {  
-      classpath 'com.google.gms:google-services:4.3.3'  
-  }  
-  ```  
-  ```gradle  
-  apply plugin: 'com.google.gms.google-services'  
-  ```  
-
-### 3. **Configure iOS**
-- Register your app and download the `GoogleService-Info.plist` file.
-- Add it to the `ios/Runner` directory and link it in Xcode.
-
-### 4. **Enable Cloud Firestore**
-- Go to [Firestore](https://console.firebase.google.com/firestore) and enable it for your project.
+#### Keyless Authentication Setup:
+1. Add the dependency in `android/app/build.gradle`:
+   ```gradle
+   implementation 'com.google.android.gms:play-services-auth:16+'
+   ```
+2. If using **ProGuard**, update `build.gradle`:
+   ```gradle
+   buildTypes {
+       release {
+           proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+       }
+   }
+   ```
+3. Add these rules to `proguard-rules.pro`:
+   ```proguard
+   -keep class com.google.android.gms.common.** { *; }
+   -keep class com.google.android.gms.auth.** { *; }
+   -keep class com.google.android.gms.tasks.** { *; }
+   ```
 
 ---
 
-## Step 3: Enable Location Services
+### 3. Register the iOS Part of Your Flutter Application
 
-Add the following permissions to your iOS app’s `Info.plist`:
-```xml  
-<key>NSLocationWhenInUseUsageDescription</key>  
-<string>This app needs access to location when open.</string>  
-<key>NSLocationAlwaysUsageDescription</key>  
-<string>This app needs access to location when in the background.</string>  
-```  
+#### Steps for Google Service Account Setup:
+1. Navigate to **APIs & Services > Credentials**.
+2. Create a **Service Account**:
+    - Fill in a name and assign the role **Service Account Token Creator**.
+    - Create and download the JSON private key file.
+3. Add the JSON file to your Flutter project:
+    - Rename it to `cloudAnchorKey.json`.
+    - Move it to `example/ios/Runner`.
+    - Open Xcode and add the file to the Runner target.
 
 ---
 
-With everything set up, you're ready to create collaborative AR experiences! 🌟
+## Setting up Firebase (Optional)
+
+If using **Firebase** for managing cloud anchors:
+1. Create a Firebase project in the [Firebase Console](https://console.firebase.google.com).
+2. Register your app for Android and iOS:
+    - Download the `google-services.json` and `GoogleService-Info.plist` files, and place them in the respective directories (`android/app` and `ios/Runner`).
+3. Update your Android `build.gradle` files:
+    - Add:
+      ```gradle
+      classpath 'com.google.gms:google-services:4.3.3'
+      ```
+    - Apply the plugin:
+      ```gradle
+      apply plugin: 'com.google.gms.google-services'
+      ```
+4. Enable **Cloud Firestore** in the Firebase Console.
+
+---
+
+## Setting up Location Services
+
+To enable location-based AR features:
+1. Add the following to your `Info.plist` file for iOS:
+   ```xml
+   <key>NSLocationWhenInUseUsageDescription</key>
+   <string>This app needs access to location when open.</string>
+   <key>NSLocationAlwaysUsageDescription</key>
+   <string>This app needs access to location when in the background.</string>
+   ```
+
+---
+
+Now you're ready to create shared AR experiences with **ar_flutter_reloaded**! 🚀 Dive in and start building.

@@ -73,7 +73,7 @@ class AndroidARView implements PlatformARView {
     _arViewCreatedCallback = arViewCreatedCallback;
     _planeDetectionConfig = planeDetectionConfig;
     // This is used in the platform side to register the view.
-    final String viewType = 'ar_flutter_reloaded';
+    final String viewType = 'ar_flutter_plugin';
     // Pass parameters to the platform side.
     final Map<String, dynamic> creationParams = <String, dynamic>{};
 
@@ -108,7 +108,7 @@ class IosARView implements PlatformARView {
     _arViewCreatedCallback = arViewCreatedCallback;
     _planeDetectionConfig = planeDetectionConfig;
     // This is used in the platform side to register the view.
-    final String viewType = 'ar_flutter_reloaded';
+    final String viewType = 'ar_flutter_plugin';
     // Pass parameters to the platform side.
     final Map<String, dynamic> creationParams = <String, dynamic>{};
 

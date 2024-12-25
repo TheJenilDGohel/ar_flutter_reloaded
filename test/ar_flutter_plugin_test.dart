@@ -1,9 +1,9 @@
+import 'package:ar_flutter_reloaded/ar_flutter_reloaded.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ar_flutter_reloaded/ar_flutter_reloaded.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('ar_flutter_reloaded');
+  const MethodChannel channel = MethodChannel('ar_flutter_plugin');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 

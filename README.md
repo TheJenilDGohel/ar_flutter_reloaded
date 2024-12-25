@@ -1,94 +1,129 @@
 # ar_flutter_reloaded
 [![pub package](https://img.shields.io/pub/v/ar_flutter_reloaded.svg)](https://pub.dev/packages/ar_flutter_reloaded)
 
-A Flutter plugin enabling collaborative Augmented Reality (AR) experiences with support for **ARKit** on iOS and **ARCore** on Android.
+Flutter Plugin for creating **collaborative Augmented Reality (AR)** experiences, supporting **ARKit** for iOS and **ARCore** for Android devices.
 
-Special thanks to Oleksandr Leuschenko for the [arkit_flutter_plugin](https://github.com/olexale/arkit_flutter_plugin) and Gian Marco Di Francesco for the [arcore_flutter_plugin](https://github.com/giandifra/arcore_flutter_plugin), which served as the foundation for this project.
+This plugin is a reimagined and enhanced version of the original **ar_flutter_plugin** by Lars Carius. Huge thanks to **Oleksandr Leuschenko** for the [arkit_flutter_plugin](https://github.com/olexale/arkit_flutter_plugin) and **Gian Marco Di Francesco** for the [arcore_flutter_plugin](https://github.com/giandifra/arcore_flutter_plugin), whose work laid the foundation for AR in Flutter. Gratitude also to **Lars Carius**, whose exceptional work inspired this reloaded version.
+
+[GitHub Repository](https://github.com/TheJenilDGohel/ar_flutter_reloaded)
+
+---
+
+<div align="center">
+  <img src="https://media.giphy.com/media/U3UP4fTE6QfuoooLaC/giphy.gif" alt="Dragon Ball Z Goku" />
+  <p><em>GIF via <a href="https://giphy.com/gifs/TOEIAnimationUK-dragon-ball-z-son-goku-U3UP4fTE6QfuoooLaC">GIPHY</a></em></p>
+</div>
 
 ---
 
 ## Getting Started
 
-### Installation
-
-To add the plugin to your project, use:
-
-```bash  
-flutter pub add ar_flutter_reloaded  
+### Installing
+Add the plugin to your Flutter project by running:
+```bash
+flutter pub add ar_flutter_reloaded
 ```  
 
-Alternatively, add this to your `pubspec.yaml` file and run `flutter pub get`:
-
-```yaml  
-dependencies:  
-  ar_flutter_reloaded: ^0.7.3  
+Or manually add it to your `pubspec.yaml` file:
+```yaml
+dependencies:
+  ar_flutter_reloaded: ^0.0.1
 ```  
+
+Then, fetch the package using:
+```bash
+flutter pub get
+```  
+
+---
 
 ### Importing
 
-Include the plugin in your Dart code:
-
-```dart  
-import 'package:ar_flutter_reloaded/ar_flutter_reloaded.dart';  
+Add this import to your Dart code:
+```dart
+import 'package:ar_flutter_reloaded/ar_flutter_plugin.dart';
 ```  
 
-### iOS Permissions
-
-If you encounter issues with camera permissions on iOS (e.g., a blank camera view), add the following configuration to the `Podfile` in your app’s `ios` directory:
-
-```pod  
-post_install do |installer|  
-  installer.pods_project.targets.each do |target|  
-    flutter_additional_ios_build_settings(target)  
-    target.build_configurations.each do |config|  
-      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [  
-        '$(inherited)',  
-        'PERMISSION_CAMERA=1',  
-        'PERMISSION_PHOTOS=1',  
-        'PERMISSION_LOCATION=1',  
-        'PERMISSION_SENSORS=1',  
-        'PERMISSION_BLUETOOTH=1',  
-      ]  
-    end  
-  end  
-end  
+If you encounter issues with permissions on iOS, especially with the camera view, add the following to your `Podfile`:
+```pod
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    flutter_additional_ios_build_settings(target)
+    target.build_configurations.each do |config|
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+        '$(inherited)',
+        'PERMISSION_CAMERA=1',
+        'PERMISSION_LOCATION=1',
+        # Add other required permissions here
+      ]
+    end
+  end
+end
 ```  
 
 ---
 
 ## Example Applications
 
-Explore these sample implementations to see the plugin in action:
+Explore the sample applications in the repository to understand how to use the plugin effectively:
 
-| Example Name                  | Description                                                                                                                                                                  | Code Link                                                                                     |  
-|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|  
-| **Debug Options**             | A simple AR scene with toggles for visualizing the world origin, feature points, and tracked planes.                                                                        | [View Code](https://github.com/CariusLars/ar_flutter_reloaded/blob/main/example/lib/examples/debugoptionsexample.dart)            |  
-| **Local & Online Objects**     | Place GLTF/GLB objects from assets, the web, or your device. Modify their scale, position, and rotation interactively.                                                      | [View Code](https://github.com/CariusLars/ar_flutter_reloaded/blob/main/example/lib/examples/localandwebobjectsexample.dart)      |  
-| **Objects & Anchors on Planes** | Tap on a plane to create an anchor with a 3D model attached to it.                                                                                                          | [View Code](https://github.com/CariusLars/ar_flutter_reloaded/blob/main/example/lib/examples/objectgesturesexample.dart)          |  
-| **Object Transformation Gestures** | Enables gestures to pan, rotate, or resize objects after placing them in the AR scene.                                                                                  | [View Code](https://github.com/CariusLars/ar_flutter_reloaded/blob/main/example/lib/examples/objectsonplanesexample.dart)         |  
-| **Screenshots**               | Take snapshots of your AR scene using a screenshot function.                                                                                                               | [View Code](https://github.com/CariusLars/ar_flutter_reloaded/blob/main/example/lib/examples/screenshotexample.dart)              |  
-| **Cloud Anchors**             | Share AR experiences across devices by uploading and downloading anchors using Google Cloud Anchor Service and Firebase. Requires additional setup.                          | [View Code](https://github.com/CariusLars/ar_flutter_reloaded/blob/main/example/lib/examples/cloudanchorexample.dart)             |  
-| **External Object Management** | Uses Firestore to manage models and provides UI for selecting and placing objects. Requires Cloud Anchor Service and Firestore setup.                                        | [View Code](https://github.com/CariusLars/ar_flutter_reloaded/blob/main/example/lib/examples/externalmodelmanagementexample.dart) |  
+| Example Name                 | Description                                                                                                                                                                                                                           | Code Link                                                                                                                                          |
+|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Debug Options**            | Visualize the world origin, feature points, and tracked planes with a simple AR scene.                                                                                                          | [Debug Options Code](https://github.com/TheJenilDGohel/ar_flutter_reloaded/blob/main/example/lib/examples/debug_options_example.dart)              |
+| **Local & Online Objects**   | Place GLTF objects from assets, GLB objects from the web, or GLB objects from local storage. Modify scale, position, and orientation after placing objects.                                     | [Local & Online Objects Code](https://github.com/TheJenilDGohel/ar_flutter_reloaded/blob/main/example/lib/examples/local_and_online_objects.dart)  |
+| **Objects on Planes**        | Tap on a plane to create an anchor with a 3D model attached.                                                                                                                                   | [Objects on Planes Code](https://github.com/TheJenilDGohel/ar_flutter_reloaded/blob/main/example/lib/examples/objects_on_planes_example.dart)      |
+| **Cloud Anchors**            | Place objects, upload them to the cloud, and download them for shared AR experiences across multiple devices.                                                                                  | [Cloud Anchors Code](https://github.com/TheJenilDGohel/ar_flutter_reloaded/blob/main/example/lib/examples/cloud_anchors_example.dart)              |
+| **External Object Management**| Manage 3D models dynamically using Firestore for shared AR experiences.                                                                                                                       | [External Model Management Code](https://github.com/TheJenilDGohel/ar_flutter_reloaded/blob/main/example/lib/examples/external_model_management.dart) |  
 
-For details on setting up Cloud Anchors, check the [Cloud Anchor Setup Guide](cloudAnchorSetup.md).
+---
+
+## Future Goals 🚀
+
+This is just the beginning! The **ar_flutter_reloaded** plugin has ambitious plans for the future:
+
+1. **Example Enhancements**:
+   - Revamp the existing examples with realistic, interactive scenarios to better showcase the potential of AR.
+   - Add new examples focusing on cutting-edge AR use cases like real-time collaboration, object manipulation, and interactive education.
+
+2. **Architecture Overhaul**:
+   - Refactor the plugin architecture to improve modularity, extensibility, and performance.
+   - Adopt modern best practices to make the codebase easier to maintain and contribute to.
+
+3. **Realistic Visuals**:
+   - Introduce more visually appealing and realistic 3D models and AR interactions.
+   - Add support for advanced rendering techniques like lighting and shadows for a lifelike AR experience.
+
+4. **Cross-Device Collaboration**:
+   - Enhance collaborative AR functionality to work seamlessly across multiple devices.
+   - Add support for advanced synchronization features, making shared AR experiences more fluid.
+
+5. **Advanced Features**:
+   - Explore support for marker-based AR and object detection.
+   - Add gesture-based interactions, such as scaling, rotation, and more.
+
+6. **Documentation and Tutorials**:
+   - Provide step-by-step guides and tutorials for common AR use cases to make onboarding easier for developers.
+   - Regularly update documentation to reflect the latest changes and features.
+
+Your feedback and contributions will help shape the future of this plugin!
 
 ---
 
 ## Contributing
 
-Contributions are always welcome! Here’s how you can help:
-- Submit a [pull request](https://github.com/CariusLars/ar_flutter_reloaded/compare).
-- Report issues or suggest features by [opening an issue](https://github.com/CariusLars/ar_flutter_reloaded/issues/new).
-- Share your ideas in the [discussions section](https://github.com/CariusLars/ar_flutter_reloaded/discussions).
+Contributions are welcome! Whether it's bug fixes, new features, or discussions about improving the plugin, please:
+- [Submit a Pull Request](https://github.com/TheJenilDGohel/ar_flutter_reloaded/pulls)
+- [Report an Issue](https://github.com/TheJenilDGohel/ar_flutter_reloaded/issues)
+- [Join the Discussion](https://github.com/TheJenilDGohel/ar_flutter_reloaded/discussions)
 
 ---
 
 ## Plugin Architecture
 
-Below is a high-level overview of the plugin’s architecture:
+The plugin architecture has been carefully designed for extensibility and performance. Here’s a high-level view of its structure:
 
 ![Plugin Architecture](./AR_Plugin_Architecture_highlevel.svg)
 
 ---  
 
-Unleash the power of Augmented Reality in your Flutter apps today! 🚀  
+Get started with **ar_flutter_reloaded** and bring your AR dreams to life! 🚀  

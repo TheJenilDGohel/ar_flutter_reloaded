@@ -1,8 +1,7 @@
 name: ar_flutter_reloaded
-description: Flutter plugin for creating immersive and collaborative Augmented Reality (AR) experiences. Supports ARKit for iOS and ARCore for Android, enabling seamless cross-platform AR development with the latest Flutter and Android versions.
+description: ar_flutter_reloaded is a Flutter plugin designed to enable the creation of immersive Augmented Reality (AR) experiences, supporting ARKit for iOS devices and ARCore for Android devices. This package is perfect for developing collaborative, interactive AR applications with Flutter's ease of use and cross-platform capabilities.
 version: 0.0.1
-#homepage: https://lars.carius.io
-repository: https://github.com/CariusLars/ar_flutter_reloaded
+repository: https://github.com/TheJenilDGohel/ar_flutter_reloaded.git
 
 environment:
   sdk: '>=3.2.2 <4.0.0'
@@ -12,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   permission_handler: ^11.3.1
-  vector_math: ^2.1.4
-  json_annotation: ^4.9.0
+  vector_math: ^2.1.1
+  json_annotation: ^4.5.0
   geolocator: ^13.0.2
 
 dev_dependencies:
@@ -32,7 +31,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.thejenilgohel.ar_flutter_reloaded
-        pluginClass: ArFlutterPlugin
+        package: com.jenildgohel.ar_flutter_reloaded
+        pluginClass: ArFlutterReloaded
       ios:
         pluginClass: ArFlutterPlugin
