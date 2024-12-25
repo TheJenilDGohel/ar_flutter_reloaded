@@ -34,4 +34,4 @@ flutter:
         package: com.jenildgohel.ar_flutter_reloaded
         pluginClass: ArFlutterReloaded
       ios:
-        pluginClass: ArFlutterPlugin
+        pluginClass: ArFlutterReloaded
